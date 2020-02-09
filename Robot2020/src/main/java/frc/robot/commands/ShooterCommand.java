@@ -12,6 +12,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.subsystems.Shooter;
 
 /**
  *
@@ -37,11 +38,13 @@ public class ShooterCommand extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+        System.out.println("The Violence is Commencing");
     }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
+        Shooter.theViolenceHasEscalated();
     }
 
     // Make this return true when this Command no longer needs to run execute()

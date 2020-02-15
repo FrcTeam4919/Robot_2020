@@ -81,34 +81,63 @@ public class OI {
 
         winchRetract = new JoystickButton(joystick0, 12);
         winchRetract.whileHeld(new WinchCommandRetract());
+        winchRetract.whenReleased(new WinchCommandRetract().Stop());
+
         winchUnwind = new JoystickButton(joystick0, 16);
         winchUnwind.whileHeld(new WinchCommandUnwind());
+        winchUnwind.whenReleased(new WinchCommandUnwind().Stop());
+
         towerExtend = new JoystickButton(joystick0, 14);
         towerExtend.whileHeld(new TowerCommandExtend());
+        towerExtend.whenReleased(new TowerCommandExtend().Stop());
+
         towerRetract = new JoystickButton(joystick0, 3);
         towerRetract.whileHeld(new TowerCommandRetract());
+        towerRetract.whenReleased(new TowerCommandRetract().Stop());
+
         clockwiseSpinner = new JoystickButton(joystick1, 4);
         clockwiseSpinner.whileHeld(new ColorWheelSpinnerClockwise());
+        clockwiseSpinner.whenReleased(new ColorWheelSpinnerClockwise().Stop());
+
         counterClockwiseSpinner = new JoystickButton(joystick1, 3);
         counterClockwiseSpinner.whileHeld(new ColorWheelSpinnerCounterClockwise());
+        counterClockwiseSpinner.whenReleased(new ColorWheelSpinnerCounterClockwise().Stop());
+
         shoot = new JoystickButton(joystick0, 2);
         shoot.whileHeld(new ShooterCommand());
+        shoot.whenReleased(new ShooterCommand().Stop());
+
         conveyorMove = new JoystickButton(joystick0, 4);
         conveyorMove.whileHeld(new ConveyorBeltCommand());
+        conveyorMove.whenReleased(new ConveyorBeltCommand().Stop());
+
         deployBallCatcher = new JoystickButton(joystick1, 1);
         deployBallCatcher.whileHeld(new DeployBallCatcher());
+        deployBallCatcher.whenReleased(new DeployBallCatcher().Stop);
+
         ballCatcherAbsorb = new JoystickButton(joystick0, 1);
         ballCatcherAbsorb.whileHeld(new BallCatcherCommand());
+        ballCatcherAbsorb.whenReleased(new BallCatcherCommand().Stop());
+
         lockBallCatcher = new JoystickButton(joystick1, 2);
         lockBallCatcher.whileHeld(new LockBallCatcher());
+        lockBallCatcher.whenReleased(new LockBallCatcher().Stop());
+
         shiftForward = new JoystickButton(joystick0, 8);
         shiftForward.whileHeld(new ShiftForward());
+        shiftForward.whenReleased(new ShiftForward().Stop());
+
         shiftBackward = new JoystickButton(joystick0, 15);
         shiftBackward.whileHeld(new ShiftBackward());
+        shiftBackward.whenReleased(new ShiftBackward().Stop());
+
         shiftRight = new JoystickButton(joystick0, 6);
         shiftRight.whileHeld(new ShiftRight());
+        shiftRight.whenReleased(new ShiftRight().Stop());
+
         shiftLeft = new JoystickButton(joystick0, 7);
         shiftLeft.whileHeld(new ShiftLeft());
+        shiftLeft.whenReleased(new ShiftLeft().Stop());
         
 
 

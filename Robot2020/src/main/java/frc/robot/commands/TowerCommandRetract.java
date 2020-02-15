@@ -62,6 +62,7 @@ public class TowerCommandRetract extends Command {
     // subsystems is scheduled to run
     @Override
     protected void interrupted() {
+        TowerMotor.stop();
     }
     public TowerCommandRetract Stop(){
     	isFinished=true;

@@ -106,14 +106,14 @@ public class OI {
         shoot = new JoystickButton(joystick0, 2);
         shoot.whileHeld(new ShooterCommand());
         shoot.whenReleased(new ShooterCommand().Stop());
-
+        
         conveyorMove = new JoystickButton(joystick0, 4);
         conveyorMove.whileHeld(new ConveyorBeltCommand());
         conveyorMove.whenReleased(new ConveyorBeltCommand().Stop());
 
         deployBallCatcher = new JoystickButton(joystick1, 1);
         deployBallCatcher.whileHeld(new DeployBallCatcher());
-        deployBallCatcher.whenReleased(new DeployBallCatcher().Stop);
+        deployBallCatcher.whenReleased(new DeployBallCatcher().Stop());
 
         ballCatcherAbsorb = new JoystickButton(joystick0, 1);
         ballCatcherAbsorb.whileHeld(new BallCatcherCommand());

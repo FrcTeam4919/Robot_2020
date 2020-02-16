@@ -11,7 +11,7 @@ public class AutoConveyor extends TimedCommand {
     }
     @Override
     protected void initialize() {
-
+        System.out.println("Conveying");
     }
     @Override
     protected void execute() {
@@ -19,7 +19,8 @@ public class AutoConveyor extends TimedCommand {
     }
     @Override
     protected void end() {
-
+        ConveyorBelt.Cease();
+        System.out.println("Conveyed");
     }
     @Override
     protected void interrupted() {

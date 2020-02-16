@@ -39,7 +39,6 @@ public class AutonomousCommand extends CommandGroup {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        new AutonomousStage();
     }
 
     // Called repeatedly when this Command is scheduled to run

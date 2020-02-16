@@ -162,15 +162,9 @@ public class Robot extends TimedRobot {
         } else {
             colorString = "Unknown";
         }
-        SmartDashboard.putNumber("Red", detectedColor.red);
-        SmartDashboard.putNumber("Green", detectedColor.green);
-        SmartDashboard.putNumber("Blue", detectedColor.blue);
-        SmartDashboard.putNumber("Confidence", match.confidence);
         SmartDashboard.putString("Detected Color", colorString);
-        double IR = m_colorSensor.getIR();
-        SmartDashboard.putNumber("IR", IR);
-        int proximity = m_colorSensor.getProximity();
-        SmartDashboard.putNumber("Proximity", proximity);
+        //double IR = m_colorSensor.getIR();
+        //int proximity = m_colorSensor.getProximity();
     }
 
     /**

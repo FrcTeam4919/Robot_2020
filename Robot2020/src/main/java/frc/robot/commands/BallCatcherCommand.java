@@ -14,6 +14,10 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.subsystems.*;
 import frc.robot.*;
+
+
+
+
 /**
  *
  */
@@ -45,6 +49,7 @@ public class BallCatcherCommand extends Command {
     @Override
     protected void execute() {
         BallCatcher.Absorb();
+        System.out.println("Absorbing");
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -56,7 +61,8 @@ public class BallCatcherCommand extends Command {
     // Called once after isFinished returns true
     @Override
     protected void end() {
-        
+        BallCatcher.UnAbsorb();
+        System.out.println("Unabsorbing");
     }
 
     // Called when another command which requires one or more of the same

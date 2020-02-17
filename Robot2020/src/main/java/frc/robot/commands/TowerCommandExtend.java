@@ -45,6 +45,7 @@ public class TowerCommandExtend extends Command {
     @Override
     protected void execute() {
         TowerMotor.extend();
+        System.out.println("Exteding Tower");
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -56,6 +57,8 @@ public class TowerCommandExtend extends Command {
     // Called once after isFinished returns true
     @Override
     protected void end() {
+        TowerMotor.stop();
+        System.out.println("Tower Extended");
     }
 
     // Called when another command which requires one or more of the same

@@ -44,6 +44,7 @@ public class TowerCommandRetract extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
+        System.out.println("Retracting Tower");
         TowerMotor.retract();
     }
 
@@ -56,12 +57,15 @@ public class TowerCommandRetract extends Command {
     // Called once after isFinished returns true
     @Override
     protected void end() {
+        System.out.println("Tower Retracted");
+        TowerMotor.stop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     @Override
     protected void interrupted() {
+        TowerMotor.stop();
     }
     public TowerCommandRetract Stop(){
     	isFinished=true;

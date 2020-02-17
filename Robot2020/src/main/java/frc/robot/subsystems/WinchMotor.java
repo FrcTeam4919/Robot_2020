@@ -64,7 +64,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
     public static void retract(){
         winchController.setSpeed(-1.0);
     }
-    public void stop(){
+    public static void stop(){
         winchController.setSpeed(0.0);
     }
 

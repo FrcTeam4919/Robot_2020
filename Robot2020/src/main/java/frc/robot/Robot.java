@@ -10,28 +10,23 @@
 
 package frc.robot;
 
-import org.opencv.core.Mat;
-import org.opencv.core.Point;
-import org.opencv.core.Scalar;
-import org.opencv.imgproc.Imgproc;
-import edu.wpi.cscore.CvSink;
-import edu.wpi.cscore.CvSource;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.cameraserver.*;
 import edu.wpi.first.hal.FRCNetComm.tInstances;
 import edu.wpi.first.hal.FRCNetComm.tResourceType;
 import edu.wpi.first.hal.HAL;
-import com.revrobotics.ColorSensorV3;
-import com.revrobotics.ColorMatchResult;
+//import com.revrobotics.ColorSensorV3;
+//import com.revrobotics.ColorMatchResult;
 import com.analog.adis16448.frc.ADIS16448_IMU;
+import com.analog.adis16448.frc.ADIS16448_IMU.IMUAxis;
 import com.revrobotics.ColorMatch;
-import edu.wpi.first.wpilibj.I2C;
+//import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+//import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 
@@ -57,8 +52,8 @@ public class Robot extends TimedRobot {
     public static ConveyorBelt conveyorBelt;
     public static Spinner spinner;
     public static Shooter shooter;
-    private final I2C.Port i2cPort = I2C.Port.kOnboard;
-    private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
+    //private final I2C.Port i2cPort = I2C.Port.kOnboard;
+    //private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
     private final ColorMatch m_colorMatcher = new ColorMatch();
     private final Color kBlueTarget = ColorMatch.makeColor(0.143, 0.427, 0.429);
     private final Color kGreenTarget = ColorMatch.makeColor(0.197, 0.540, 0.250);
@@ -77,39 +72,7 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void robotInit() {
-        m_visionThread = new Thread(() -> {
-            UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-
-            camera.setResolution(640, 480);
-            // Gets a CvSink. This will capture Mats from the camera
-            CvSink cvSink = CameraServer.getInstance().getVideo();
-            // Sets up a CvSource. This will send images back to the Dashboard
-            CvSource outputStream = CameraServer.getInstance().putVideo("Rectangle", 640, 480);
-
-            // Mats are system intensive. It is best to reuse just one throughout code
-            Mat mat = new Mat();
-
-            // Interrupted can never be 'true'. The program will run an infinite loop
-            // and never exit if it is. This will allow the robot to stop the
-            // thread when restarting the code or deploying
-            while(!Thread.interrupted()) {
-                // tells the CvSink to grab a frame from the camera and put it into
-                // the source mat. If there is an error notify the output.
-                if (cvSink.grabFrame(mat) == 0) {
-                    // sends output to the error
-                    outputStream.notifyError(cvSink.getError());
-                    // skips the rest of the current iteration
-                    continue;
-                }
-            }
-            // Puts a rectangle on the image
-            Imgproc.rectangle(mat, new Point(100, 100), new Point(400, 400), new Scalar(255, 255, 255), 5);
-            // Gives the output stream a new image to display
-            outputStream.putFrame(mat);
-         }
-        );
-        m_visionThread.setDaemon(true);
-        m_visionThread.start();
+        imu.setYawAxis(IMUAxis.kX);
         m_colorMatcher.addColorMatch(kBlueTarget);
         m_colorMatcher.addColorMatch(kGreenTarget);
         m_colorMatcher.addColorMatch(kRedTarget);
@@ -122,9 +85,9 @@ public class Robot extends TimedRobot {
         conveyorBelt = new ConveyorBelt();
         spinner = new Spinner();
         shooter = new Shooter();
-        //server = CameraServer.getInstance();
-        //UsbCamera camera = server.startAutomaticCapture();
-        //camera.setResolution(640, 480);
+        server = CameraServer.getInstance();
+        UsbCamera camera = server.startAutomaticCapture();
+        camera.setResolution(640, 480);
 
 
 
@@ -148,7 +111,7 @@ public class Robot extends TimedRobot {
     }
     @Override
     public void robotPeriodic() {
-        m_colorMatcher.setConfidenceThreshold(0.95);
+        /*m_colorMatcher.setConfidenceThreshold(0.95);
         Color detectedColor = m_colorSensor.getColor();
         String colorString;
         ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor);
@@ -165,7 +128,7 @@ public class Robot extends TimedRobot {
         }
         SmartDashboard.putString("Detected Color", colorString);
         //double IR = m_colorSensor.getIR();
-        //int proximity = m_colorSensor.getProximity();
+        //int proximity = m_colorSensor.getProximity();*/
     }
 
     /**

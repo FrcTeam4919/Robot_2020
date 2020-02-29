@@ -61,6 +61,9 @@ private static PWMVictorSPX ballShooterController;
     public static void theViolenceHasEscalated() {
         ballShooterController.setSpeed(1.0);
     }
+    public static void reversingTheViolence() {
+        ballShooterController.setSpeed(-1.0);
+    }
     public static void theViolenceHasDeEscalated(){
         ballShooterController.setSpeed(0);
     }

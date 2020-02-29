@@ -61,6 +61,10 @@ public class Robot extends TimedRobot {
     private final Color kYellowTarget = ColorMatch.makeColor(0.320, 0.525, 0.150);
     public static final ADIS16448_IMU imu = new ADIS16448_IMU();
     CameraServer server;
+    double leftSlow = 0.24;
+    double rightSlow = -0.24;
+    double rotateSpeed = 0.35;
+    double rotateSpeedSlow = 0.25;
     //public static edu.wpi.first.cameraserver.CameraServer camera;
 
 
@@ -143,6 +147,45 @@ public class Robot extends TimedRobot {
     @Override
     public void disabledPeriodic() {
         Scheduler.getInstance().run();
+        if (Math.abs(imu.getAngle()) <= 3) {
+            Drivetrain.leftMotor.set(leftSlow - (imu.getAngle()) / 15);
+            Drivetrain.rightMotor.set(rightSlow - (imu.getAngle()) / 15);
+           } else if (Math.abs(imu.getAngle()) < 10) {
+            if (imu.getAngle() > 0) {
+            Drivetrain.leftMotor.set(leftSlow);
+            Drivetrain.rightMotor.set(1.1 * rightSlow);
+            } else if (imu.getAngle() < 0) {
+            Drivetrain.leftMotor.set(1.1 * leftSlow);
+            Drivetrain.rightMotor.set(rightSlow);
+            }
+           } else
+            if (imu.getAngle() > 0) {
+             while (imu.getAngle() > 10 && isAutonomous()) {
+            Drivetrain.leftMotor.set(-rotateSpeed);
+            Drivetrain.rightMotor.set(-rotateSpeed);
+             }
+            while (imu.getAngle() > 0 && isAutonomous()) {
+            Drivetrain.leftMotor.set(-rotateSpeedSlow);
+            Drivetrain.rightMotor.set(-rotateSpeedSlow);
+            }
+            while (imu.getAngle() < 0 && isAutonomous()) {
+            Drivetrain.leftMotor.set(rotateSpeedSlow);
+            Drivetrain.rightMotor.set(rotateSpeedSlow);
+            }
+           } else {
+            while (imu.getAngle() < -10 && isAutonomous()) {
+            Drivetrain.leftMotor.set(rotateSpeed);
+            Drivetrain.rightMotor.set(rotateSpeed);
+            }
+            while (imu.getAngle() < 0 && isAutonomous()) {
+            Drivetrain.leftMotor.set(rotateSpeedSlow);
+            Drivetrain.rightMotor.set(rotateSpeedSlow);
+            }
+            while (imu.getAngle() > 0 && isAutonomous()) {
+            Drivetrain.leftMotor.set(-rotateSpeedSlow);
+            Drivetrain.rightMotor.set(-rotateSpeedSlow);
+            }
+           }
     }
 
     @Override

@@ -62,6 +62,7 @@ public class OI {
     public JoystickButton counterClockwiseSpinner;
     public JoystickButton shoot;
     public JoystickButton conveyorMove;
+    public JoystickButton readyBall;
     public JoystickButton deployBallCatcher;
     public JoystickButton ballCatcherAbsorb;
     public JoystickButton lockBallCatcher;
@@ -105,19 +106,23 @@ public class OI {
         counterClockwiseSpinner.whileHeld(new ColorWheelSpinnerCounterClockwise());
         counterClockwiseSpinner.whenReleased(new ColorWheelSpinnerCounterClockwise().Stop());
 
-        shoot = new JoystickButton(joystick0, 2);
+        shoot = new JoystickButton(joystick0, 1);
         shoot.whileHeld(new ShooterCommand());
         shoot.whenReleased(new ShooterCommand().Stop());
         
-        conveyorMove = new JoystickButton(joystick0, 4);
+        conveyorMove = new JoystickButton(joystick0, 5);
         conveyorMove.whileHeld(new ConveyorBeltCommand());
         conveyorMove.whenReleased(new ConveyorBeltCommand().Stop());
+
+        readyBall = new JoystickButton(joystick0, 4);
+        readyBall.whileHeld(new ReadyBallCommand());
+        readyBall.whenReleased(new ReadyBallCommand().Stop());
 
         deployBallCatcher = new JoystickButton(joystick1, 1);
         deployBallCatcher.whileHeld(new DeployBallCatcher());
         deployBallCatcher.whenReleased(new DeployBallCatcher().Stop());
 
-        ballCatcherAbsorb = new JoystickButton(joystick0, 1);
+        ballCatcherAbsorb = new JoystickButton(joystick0, 2);
         ballCatcherAbsorb.whileHeld(new BallCatcherCommand());
         ballCatcherAbsorb.whenReleased(new BallCatcherCommand().Stop());
 

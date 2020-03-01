@@ -100,14 +100,6 @@ public class OI {
         towerRetract.whileHeld(new TowerCommandRetract());
         towerRetract.whenReleased(new TowerCommandRetract().Stop());
 
-        clockwiseSpinner = new JoystickButton(joystick1, 4);
-        clockwiseSpinner.whileHeld(new ColorWheelSpinnerClockwise());
-        clockwiseSpinner.whenReleased(new ColorWheelSpinnerClockwise().Stop());
-
-        counterClockwiseSpinner = new JoystickButton(joystick1, 3);
-        counterClockwiseSpinner.whileHeld(new ColorWheelSpinnerCounterClockwise());
-        counterClockwiseSpinner.whenReleased(new ColorWheelSpinnerCounterClockwise().Stop());
-
         shoot = new JoystickButton(joystick0, 1);
         shoot.whileHeld(new ShooterCommand());
         shoot.whenReleased(new ShooterCommand().Stop());
@@ -120,17 +112,9 @@ public class OI {
         readyBall.whileHeld(new ReadyBallCommand());
         readyBall.whenReleased(new ReadyBallCommand().Stop());
 
-        deployBallCatcher = new JoystickButton(joystick1, 1);
-        deployBallCatcher.whileHeld(new DeployBallCatcher());
-        deployBallCatcher.whenReleased(new DeployBallCatcher().Stop());
-
         ballCatcherAbsorb = new JoystickButton(joystick0, 2);
         ballCatcherAbsorb.whileHeld(new BallCatcherCommand());
         ballCatcherAbsorb.whenReleased(new BallCatcherCommand().Stop());
-
-        lockBallCatcher = new JoystickButton(joystick1, 2);
-        lockBallCatcher.whileHeld(new LockBallCatcher());
-        lockBallCatcher.whenReleased(new LockBallCatcher().Stop());
 
         shiftForward = new JoystickButton(joystick0, 8);
         shiftForward.whileHeld(new ShiftForward());
@@ -147,17 +131,11 @@ public class OI {
         shiftLeft = new JoystickButton(joystick0, 7);
         shiftLeft.whileHeld(new ShiftLeft());
         shiftLeft.whenReleased(new ShiftLeft().Stop());
-        
-        gearShiftLow = new JoystickButton(joystick1, 4);
-        gearShiftLow.whileHeld(new GearShifterLow());
 
-        gearShiftHigh = new JoystickButton(joystick1, 3);
-        gearShiftHigh.whileHeld(new GearShifterHigh());
-
-        gyroStabilization = new JoystickButton(joystick1, 5);
+        gyroStabilization = new JoystickButton(joystick1, 1);
         gyroStabilization.whileHeld(new GyroDriveStabilization());
 
-        resetGyro = new JoystickButton(joystick1, 6);
+        resetGyro = new JoystickButton(joystick1, 2);
         resetGyro.whileHeld(new Reset());
 
         // SmartDashboard Buttons

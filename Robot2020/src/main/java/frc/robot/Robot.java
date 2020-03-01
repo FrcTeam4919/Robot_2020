@@ -50,7 +50,7 @@ public class Robot extends TimedRobot {
     public static TowerMotor towerMotor;
     public static BallCatcher ballCatcher;
     public static ConveyorBelt conveyorBelt;
-    public static Spinner spinner;
+
     public static Shooter shooter;
     //private final I2C.Port i2cPort = I2C.Port.kOnboard;
     //private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
@@ -87,7 +87,6 @@ public class Robot extends TimedRobot {
         towerMotor = new TowerMotor();
         ballCatcher = new BallCatcher();
         conveyorBelt = new ConveyorBelt();
-        spinner = new Spinner();
         shooter = new Shooter();
         server = CameraServer.getInstance();
         UsbCamera camera = server.startAutomaticCapture();

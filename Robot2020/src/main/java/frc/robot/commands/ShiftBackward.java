@@ -32,7 +32,7 @@ public class ShiftBackward extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        Drivetrain.westCoastTankDrive.arcadeDrive(0, -0.5);
+        Drivetrain.westCoastTankDrive.arcadeDrive(0, -0.25);
     }
     // Make this return true when this Command no longer needs to run execute()
     @Override

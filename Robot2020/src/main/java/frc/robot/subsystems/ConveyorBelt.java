@@ -64,7 +64,7 @@ public class ConveyorBelt extends Subsystem {
     }
 
     public static void convey() {
-        conveyorController1.setSpeed(1.0);
+        conveyorController1.setSpeed(-1.0);
     }
     public static void ready() {
         conveyorController2.setSpeed(1.0);

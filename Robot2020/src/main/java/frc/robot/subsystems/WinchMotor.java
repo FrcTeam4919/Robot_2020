@@ -64,11 +64,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
     }
 
     public static void unwind() {
-        winchController.setSpeed(0.25);
+        winchController.setSpeed(1.00);
         //winchController2.setSpeed(0.25);
     }
     public static void retract(){
-        winchController.setSpeed(-0.25);
+        winchController.setSpeed(-1.00);
         //winchController2.setSpeed(-0.25);
     }
     public static void stop(){

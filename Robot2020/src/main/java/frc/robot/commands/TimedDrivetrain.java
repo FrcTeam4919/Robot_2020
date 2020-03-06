@@ -21,6 +21,7 @@ public class TimedDrivetrain extends TimedCommand {
     }
     @Override
     protected void end() {
+        Robot.drivetrain.stop();
         System.out.println("Moved backward");
     }
     @Override

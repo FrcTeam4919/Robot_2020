@@ -49,6 +49,7 @@ public class BallCatcherCommand extends Command {
     @Override
     protected void execute() {
         BallCatcher.Absorb();
+        ConveyorBelt.convey();
         System.out.println("Absorbing");
     }
 
@@ -62,6 +63,7 @@ public class BallCatcherCommand extends Command {
     @Override
     protected void end() {
         BallCatcher.UnAbsorb();
+        ConveyorBelt.Cease();
         System.out.println("Unabsorbing");
     }
 

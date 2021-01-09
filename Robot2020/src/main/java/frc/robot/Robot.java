@@ -76,7 +76,7 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void robotInit() {
-        imu.setYawAxis(IMUAxis.kX);
+        imu.setYawAxis(IMUAxis.kY);
         m_colorMatcher.addColorMatch(kBlueTarget);
         m_colorMatcher.addColorMatch(kGreenTarget);
         m_colorMatcher.addColorMatch(kRedTarget);
